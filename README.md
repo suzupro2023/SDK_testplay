@@ -5,16 +5,6 @@ Write the command set to be run in command.txt, for example:：
 command
 takeoff
 delay 5
-forward 500
-ccw 45
-back 150
-cw 90
-back 300
-ccw 90
-back 150
-cw 45
-forward 500
-curve 0 500 100 0 0 100
 land
 
 ```
