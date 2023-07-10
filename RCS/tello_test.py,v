@@ -1,0 +1,72 @@
+head	1.2;
+access;
+symbols;
+locks
+	hironobu:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2022.06.09.23.12.29;	author hironobu;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2022.06.09.22.58.24;	author hironobu;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@from tello import Tello
+import sys
+from datetime import datetime
+import time
+
+start_time = str(datetime.now())
+
+file_name = sys.argv[1]
+
+f = open(file_name, "r")
+commands = f.readlines()
+
+tello = Tello()
+for command in commands:
+    if command != '' and command != '\n':
+        command = command.rstrip()
+
+        if command.find('delay') != -1:
+            sec = float(command.partition('delay')[2])
+            print ('delay {}'.format(sec))
+            time.sleep(sec)
+            pass
+        else:
+            tello.send_command(command)
+
+log = tello.get_log()
+
+out = open('log/' + start_time + '.txt', 'w')
+for stat in log:
+    stat.print_stats()
+    str = stat.return_stats()
+    out.write(str)
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+            print 'delay %s' % sec
+@

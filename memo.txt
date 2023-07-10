@@ -1,0 +1,10 @@
+
+python3 tello_test.py command.txt
+
+
+# Key control 
+python3 tello_keyctl.py
+
+t -> takeoff
+l -> land
+q -> land and quit program
